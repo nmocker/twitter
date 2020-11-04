@@ -70,12 +70,47 @@ table {
 /* 1. Main Layout ================================= */
 * {
 	box-sizing: border-box;
+	font-family: Helvetica, Arial, sans-serif;
 }
 
 body {
 	background: #16212b;
 }
 
-/* 2. Content ================================= */
+form {
+	display: flex;
+	margin: 10px 0 0 10px;
+}
+
+form .search-field {
+	width: 250px;
+	padding: 10px;
+	margin-right: 10px;
+	color: #8394a1;
+	background-color: #253341;
+	border-radius: 20px;
+	border: none;
+	outline: none;
+}
+
+form .search-field:focus {
+	border: #1991da 1px solid;
+}
+
+form .submit-btn {
+	background-color: #1a608f;
+	color: #8a8f95;
+	border: none;
+	outline: none;
+	border-radius: 20px;
+	padding: 5px;
+	width: 75px;
+	cursor: pointer;
+}
+
+form .submit-btn:hover {
+	background-color: #1991da;
+	color: #fff;
+}
 
 /*# sourceMappingURL=main.css.map */

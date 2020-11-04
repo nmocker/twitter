@@ -20,10 +20,45 @@ TABLE OF CONTENTS:
 
 * {
   box-sizing: border-box;
+  font-family: Helvetica, Arial, sans-serif;
 }
 
 body {
   background: #16212b;
 }
 
-/* 2. Content ================================= */
+form {
+  display: flex;
+  margin: 10px 0 0 10px;
+
+  .search-field {
+    width: 250px;
+    padding: 10px;
+    margin-right: 10px;
+    color: #8394a1;
+    background-color: #253341;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+
+    &:focus {
+      border: #1991da 1px solid;
+    }
+  }
+
+  .submit-btn {
+    background-color: #1a608f;
+    color: #8a8f95;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    padding: 5px;
+    width: 75px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #1991da;
+      color: #fff;
+    }
+  }
+}

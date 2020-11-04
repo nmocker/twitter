@@ -1,4 +1,32 @@
 "use strict";
 
-console.log("Hello World from main.js! \nChange this message, and make sure it changes in the browser \nto verify that you're working in the right files.");
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var Main = /*#__PURE__*/function () {
+  function Main() {
+    _classCallCheck(this, Main);
+
+    _defineProperty(this, "handleSearch", function (event) {});
+
+    this.twitterListeners();
+  }
+
+  _createClass(Main, [{
+    key: "twitterListeners",
+    value: function twitterListeners() {
+      var bodyEL = document.querySelector('body');
+      bodyEL.addEventListener('got-results', this.handleResults);
+      bodyEL.addEventListener('got-error', this.handleSearchError);
+      var searchBtn = document.querySelector('[name="search"]');
+    }
+  }]);
+
+  return Main;
+}();
 //# sourceMappingURL=main.js.map

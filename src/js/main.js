@@ -1,3 +1,17 @@
-console.log(`Hello World from main.js! 
-Change this message, and make sure it changes in the browser 
-to verify that you're working in the right files.`)
+class Main {
+    constructor() {
+        this.twitterListeners();
+    }
+    twitterListeners() {
+        const bodyEL = document.querySelector('body');
+        bodyEL.addEventListener('got-results', this.handleResults);
+        bodyEL.addEventListener('got-error', this.handleSearchError);
+        const searchBtn = document.querySelector('[name="search"]');
+    }
+
+    handleSearch = (event) => {
+        
+    }
+
+
+}
