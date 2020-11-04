@@ -113,4 +113,8 @@ form .submit-btn:hover {
 	color: #fff;
 }
 
+.tweets-ul {
+	display: flex;
+}
+
 /*# sourceMappingURL=main.css.map */
