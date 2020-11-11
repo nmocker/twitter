@@ -24,6 +24,7 @@ class Main {
             alert('Please enter a keyword')
         } else {
             api.keywordSearch(inputKeywordEl);
+    
         }
     }
 
@@ -35,22 +36,39 @@ class Main {
         console.log('result', results)
 
         for (let r in results) {
-            const tweets = results[r];
+            const tweet = results[r];
+
 
             const tweetEl = document.createElement('li');
             tweetsUl.appendChild(tweetEl);
 
+            const tweetDiv = document.createElement('div');
+            tweetEl.appendChild(tweetDiv);
+            tweetDiv.classList.add('tweet-div');
+
+            const imgDiv = document.createElement('div');
+            tweetEl.appendChild(imgDiv);
+            imgDiv.classList.add('img-div');
+        
+
+            const userImg = document.createElement('img');
+            userImg.setAttribute('src', tweet.user.profile_image_url);
+            imgDiv.appendChild(userImg);
+
             const userEl = document.createElement('h2');
-            tweetEl.appendChild(userEl);
-            userEl.textContent = tweets.user.name;
+            tweetDiv.appendChild(userEl);
+            userEl.textContent = tweet.user.name;
+
+            
 
             const contentEl = document.createElement('p');
-            tweetEl.appendChild(contentEl);
-            contentEl.textContent = tweets.text;
+            tweetDiv.appendChild(contentEl);
+            var hyperlinkedTweet = this.addHyperlinks(tweet.text)
+            contentEl.innerHTML = hyperlinkedTweet;
 
             const timeEl = document.createElement('span');
-            tweetEl.appendChild(timeEl);
-            timeEl.textContent = tweets.created_at;
+            tweetDiv.appendChild(timeEl);
+            timeEl.textContent = tweet.user.created_at;
         }
     }
 
@@ -72,7 +90,7 @@ class Main {
             + = 1 or more
             ? = 0 or 1
         */
-        var matches = text.match(/(https?:\/\/[\w\.]+)/g)
+        var matches = text.match(/(https?:\/\/[\w\./\-\_]+)/g)
         if (matches) { 
             // let's add an A tag around each
             // for (let index in matches) {
@@ -81,6 +99,13 @@ class Main {
                 text = text.replace(url, `<a href="${url}">${url}</a>`)
             }	
         } 
+
+        var mentions = text.match(/\s([@#][\w_-]+)/g)
+        if (mentions) {
+            for (let url of mentions) {
+                text = text.replace(url, `<a href="https://twitter.com/${url}">${url}</a>`)
+            }
+        }
     
         return text
     }

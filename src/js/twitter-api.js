@@ -1,5 +1,5 @@
 class TwitterApi {
-    API_URL = 'https://circuslabs.net/proxies/twitter/twitter-proxy.php';
+    API_URL = 'https://circuslabs.net/proxies/twitter/twitter-proxy3.php';
 
     keywordSearch(term) {
         axios

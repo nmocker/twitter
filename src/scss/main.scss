@@ -65,4 +65,44 @@ form {
 
 .tweets-ul {
   display: flex;
+  flex-direction: column;
+
+  li {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: flex-end;
+    background-color: #253341;
+    color: #fff;
+    padding: 10px 20px;
+    margin: 20px;
+    border-radius: 20px;
+
+    .tweet-div {
+      padding-left: 15px;
+    }
+
+    img {
+      border-radius: 50%;
+    }
+
+    a {
+      color: #1c8dd2;
+      text-decoration: none;
+    }
+
+    h2 {
+      font-weight: 700;
+      padding-bottom: 8px;
+    }
+
+    p {
+      line-height: 20px;
+      padding-bottom: 10px;
+    }
+
+    span {
+      color: #8899a6;
+    }
+  }
 }

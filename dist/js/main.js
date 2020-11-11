@@ -16,6 +16,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 var Main = /*#__PURE__*/function () {
   function Main() {
+    var _this = this;
+
     _classCallCheck(this, Main);
 
     _defineProperty(this, "handleSearch", function (event) {
@@ -39,18 +41,30 @@ var Main = /*#__PURE__*/function () {
       console.log('result', results);
 
       for (var r in results) {
-        var tweets = results[r];
+        var tweet = results[r];
         var tweetEl = document.createElement('li');
         tweetsUl.appendChild(tweetEl);
+        var tweetDiv = document.createElement('div');
+        tweetEl.appendChild(tweetDiv);
+        tweetDiv.classList.add('tweet-div');
+        var imgDiv = document.createElement('div');
+        tweetEl.appendChild(imgDiv);
+        imgDiv.classList.add('img-div');
+        var userImg = document.createElement('img');
+        userImg.setAttribute('src', tweet.user.profile_image_url);
+        imgDiv.appendChild(userImg);
         var userEl = document.createElement('h2');
-        tweetEl.appendChild(userEl);
-        userEl.textContent = tweets.user.name;
+        tweetDiv.appendChild(userEl);
+        userEl.textContent = tweet.user.name;
         var contentEl = document.createElement('p');
-        tweetEl.appendChild(contentEl);
-        contentEl.textContent = tweets.text;
+        tweetDiv.appendChild(contentEl);
+
+        var hyperlinkedTweet = _this.addHyperlinks(tweet.text);
+
+        contentEl.innerHTML = hyperlinkedTweet;
         var timeEl = document.createElement('span');
-        tweetEl.appendChild(timeEl);
-        timeEl.textContent = tweets.created_at;
+        tweetDiv.appendChild(timeEl);
+        timeEl.textContent = tweet.user.created_at;
       }
     });
 
@@ -71,7 +85,7 @@ var Main = /*#__PURE__*/function () {
           + = 1 or more
           ? = 0 or 1
       */
-      var matches = text.match(/(https?:\/\/[\w\.]+)/g);
+      var matches = text.match(/(https?:\/\/[\w\./\-\_]+)/g);
 
       if (matches) {
         // let's add an A tag around each
@@ -89,6 +103,24 @@ var Main = /*#__PURE__*/function () {
           _iterator.e(err);
         } finally {
           _iterator.f();
+        }
+      }
+
+      var mentions = text.match(/\s([@#][\w_-]+)/g);
+
+      if (mentions) {
+        var _iterator2 = _createForOfIteratorHelper(mentions),
+            _step2;
+
+        try {
+          for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+            var _url = _step2.value;
+            text = text.replace(_url, "<a href=\"https://twitter.com/".concat(_url, "\">").concat(_url, "</a>"));
+          }
+        } catch (err) {
+          _iterator2.e(err);
+        } finally {
+          _iterator2.f();
         }
       }
 

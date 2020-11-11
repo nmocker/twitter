@@ -12,7 +12,7 @@ var TwitterApi = /*#__PURE__*/function () {
   function TwitterApi() {
     _classCallCheck(this, TwitterApi);
 
-    _defineProperty(this, "API_URL", 'https://circuslabs.net/proxies/twitter/twitter-proxy.php');
+    _defineProperty(this, "API_URL", 'https://circuslabs.net/proxies/twitter/twitter-proxy3.php');
   }
 
   _createClass(TwitterApi, [{
